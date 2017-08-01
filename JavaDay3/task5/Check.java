@@ -4,10 +4,10 @@ public class Check {
 	
 	public static void main(String args[]){
 
-		A a = new A();
-		X x = new X();
+		OuterClass1 outer1 = new OuterClass1();
+		OuterClass2 outer2 = new OuterClass2();
 		
-		X.Y object = x.new Y(a, "Success!");
+		outer2.new InnerClass2(outer1, "Success!");
 	}
 
 }
