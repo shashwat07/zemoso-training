@@ -1,4 +1,8 @@
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
+import java.util.Iterator;
+import java.util.List;
 import java.util.Vector;
 
 public class VampireNumber {
@@ -13,6 +17,8 @@ public class VampireNumber {
 		System.out.println("The first 100 vampire numbers are :");
 		
 		int count=1;
+		
+		Vector fin = new Vector();
 		
 		for(int j=1;j<1000;j++){
 			int f=0,m=j;
@@ -59,24 +65,36 @@ public class VampireNumber {
 				Collections.sort(num);
 				Collections.sort(numv);
 				
+				
 								
 				if(num.equals(numv)){
-					System.out.println(count + ". " + v + ". Here, x is " + x + " y is " + y +".");
+					fin.addElement(new Integer(v));
+					//System.out.println(count + ". " + v + ". Here, x is " + x + " y is " + y +".");
 					count++;
 				}
 				
 				
 				
-				if(count==101){
+				if(count==125){
 					break;
 				}
 				
 				
 			}
-			if(count==101){
+			if(count==125){
 				break;
 			}
-			y=0;
+						
+		}
+		Collections.sort(fin);
+		Iterator z = fin.iterator();
+		count=1;
+		while(z.hasNext()){
+			System.out.println(count + ". " + z.next());
+			count++;
+			if(count>100){
+				break;
+			}
 			
 		}
 		
