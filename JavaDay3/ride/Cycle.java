@@ -1,6 +1,10 @@
 package ride;
 
 public class Cycle {
+	
+	void balance(){
+		System.out.println("balancing a cycle!");
+	}
 
 	
 	
@@ -16,23 +20,18 @@ public class Cycle {
 		cyc[1]=bi; // Implicit upcasting
 		cyc[2]=tri; // Implicit upcasting
 		
-		uni.balance();
-		bi.balance();
-		// 
-		// tri.balance();
-		//
-		//shows error message because there is no balance method in Tricycle class.
+		cyc[0].balance();
+		cyc[1].balance(); 
+		cyc[2].balance();
 		
-		Unicycle downUni = (Unicycle) cyc[0];	
-		Bicycle downBi = (Bicycle) cyc[1];
-		Tricycle downTri = (Tricycle) cyc[2];
+		
+		Unicycle downUni = (Unicycle) cyc[0];   // Downcasting	
+		Bicycle downBi = (Bicycle) cyc[1];		// Downcasting
+		Tricycle downTri = (Tricycle) cyc[2];	// Downcasting
 		
 		downUni.balance();
 		downBi.balance();
-		//
-		// downTri.balance();
-		//
-		//shows error message because there is no balance method in Tricycle class.
+		downTri.balance();
 				
 	}
 
