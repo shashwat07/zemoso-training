@@ -1,6 +1,9 @@
+import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Scanner;
@@ -12,7 +15,7 @@ public class CharacterCounter {
 	public static void main(String[] args) throws IOException {
 		
 		Scanner scan = new Scanner(System.in);
-		System.out.println("Please lenter the file name to be read ");
+		System.out.println("Please enter the file name to be read ");
 		String fileName = scan.nextLine();
 		File file = new File(fileName);
 		FileReader inputStream = new FileReader(file);
@@ -40,6 +43,12 @@ public class CharacterCounter {
 		
 		System.out.println(charCounter);
 		
+		PrintWriter out = new PrintWriter("result.txt");
+		
+		for(Map.Entry m:charCounter.entrySet()){  
+			   out.println("Character '" + m.getKey() + "' occurred " + m.getValue() + " times.");  
+			  }  
+		out.close();
 	}
 
 }
