@@ -1,3 +1,4 @@
+import java.util.Scanner;
 import java.util.regex.Pattern;
 
 
@@ -7,29 +8,30 @@ public class Regex {
 	
 	public static void main(String[] args) {
 		
-		String s[] = new String[7];
-		s[0] = ".";
-		s[1] = "This should match the regex.";
-		s[2] = s[1] + " Now it won't!";
-		s[3] = "This shouldn't wor.k";
-		s[4] = "won't work!";
-		s[5] = "S.";
-		s[6] = "s.";
+		String regex = "[A-Z].*\\.";  // Regular expression to check for line starting with capital alphabet and ending with period(.)
 		
-		String regex = "[A-Z].*\\.";
+		Scanner scan = new Scanner(System.in);
+		System.out.println("Enter the string to check for pattern, -1 to exit");
+		String checkForPattern; 
 		
-		for(int i=0;i<7;i++){
-			boolean b = Pattern.matches(regex, s[i]);
-			if(b){
-				System.out.println("Pattern Matches");
+		while(true){
+			checkForPattern = scan.nextLine();  // take user input for strings to check for pattern
+			if(checkForPattern.equals("-1")){   // exit if value entered is -1
+				System.out.println("Program closed!");
+				break;
 			}
 			else{
-				System.out.println("No Match!");
+				boolean match = Pattern.matches(regex, checkForPattern);	// sets boolean to true if pattern matches
+				if(match){
+					System.out.println("Pattern Matches!");
+				}
+				else{
+					System.out.println("Match not found!");
+				}
 			}
 		}
+		scan.close();
 		
-		
-
 	}
 
 }
