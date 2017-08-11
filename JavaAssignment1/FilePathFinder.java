@@ -10,7 +10,7 @@ public class FilePathFinder {
 		boolean found = false;
 		int count = 0;
 		for(File files : file.listFiles()){
-			if(files.isDirectory()){
+			if(files.isDirectory()){		// if file is a directory -> call recursively in the directory
 				count+=getFile(files,regex);
 			}
 			else if(files.isFile()){
@@ -35,7 +35,7 @@ public class FilePathFinder {
 		String regex = null;
 		File baseFolder = new File("/home");
 		File[] listOFiles = baseFolder.listFiles();
-		boolean found = false;
+		
 		int count=0;
 		while(true){
 			System.out.println("Enter a regular expression to search files, to quit enter -1");
@@ -45,7 +45,7 @@ public class FilePathFinder {
 				break;
 			}
 			
-			count+=getFile(baseFolder,regex);
+			count+=getFile(baseFolder,regex);	// searches for file names in bases folder
 			
 			if(count==0){
 				System.out.println("File not found!");
@@ -54,7 +54,7 @@ public class FilePathFinder {
 			
 		}
 		
-		
+		scan.close();
 
 	}
 
