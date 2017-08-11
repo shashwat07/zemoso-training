@@ -1,8 +1,5 @@
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Collections;
 import java.util.Iterator;
-import java.util.List;
 import java.util.Vector;
 
 public class VampireNumber {
@@ -10,72 +7,77 @@ public class VampireNumber {
 	
 	public static void main(String[] args) {
 		
-		int v,x,y;
-		x=1;
-		y=1;
+		int vampireNumber,firstNumber,secondNumber;
+		firstNumber=1;
+		secondNumber=1;
 		
 		System.out.println("The first 100 vampire numbers are :");
 		
 		int count=1;
 		
-		Vector fin = new Vector();
+		Vector<Integer> vNumbers = new Vector<Integer>();
 		
 		for(int j=1;j<1000;j++){
-			int f=0,m=j;
-			while(m>0){
+			int order=0,m=j;
+			while(m>0){		// to check for order of j
 				m=m/10;
-				f++;
+				order++;
 			}
 			int i = j;
-			int limit = (int) Math.pow(10, f);
-			for(;i<limit;i++){
-				x=j;
-				y=i;
+			int limit = (int) Math.pow(10, order);
+			for(;i<limit;i++){		// checks for i,j having the same number of digits.
+				firstNumber=j;
+				secondNumber=i;
 				
-				v=x*y;
+				vampireNumber=firstNumber*secondNumber;
 				
 				
-				if(x%10 == 0 && y%10==0){
+				if(firstNumber%10 == 0 && secondNumber%10==0){		// since both can't have trailing zeros
 					continue;
 				}
 				
-				Vector num = new Vector();
-				Vector numv = new Vector();
+				Vector<Integer> bothNumbers = new Vector<Integer>();
+				Vector<Integer> vampNumber = new Vector<Integer>();
 				
-				int p=x, q=y, z=v;
-				while(p>0){
-					num.addElement(new Integer(p%10));
-					p=p/10;
-				}
-				while(q>0){
-					num.addElement(new Integer(q%10));
-					q=q/10;
+				int fNum=firstNumber, sNum=secondNumber, vNum=vampireNumber;
+				
+				// Adding digits of first number in bothNumbers vector
+				while(fNum>0){
+					bothNumbers.addElement(new Integer(fNum%10));
+					fNum=fNum/10;
 				}
 				
-				while(z>0){
-					numv.addElement(new Integer(z%10));
-					z=z/10;
+				// Adding digits of second number in bothNumbers vector
+				while(sNum>0){
+					bothNumbers.addElement(new Integer(sNum%10));
+					sNum=sNum/10;
 				}
 				
-				if(num.size() != numv.size()){
+				// Adding digits of vampire number in vampNumbers vector
+				while(vNum>0){
+					vampNumber.addElement(new Integer(vNum%10));
+					vNum=vNum/10;
+				}
+				
+				// if size of the vectors don't match -> not vampire number
+				if(vampNumber.size() != vampNumber.size()){
 					continue;
 				}
 				
 				
-				Collections.sort(num);
-				Collections.sort(numv);
+				Collections.sort(bothNumbers);
+				Collections.sort(vampNumber);
 				
 				
-								
-				if(num.equals(numv)){
-					fin.addElement(new Integer(v));
-					//System.out.println(count + ". " + v + ". Here, x is " + x + " y is " + y +".");
+				// both vectors should have same digits if satisfying vampire number conditions. 
+				if(bothNumbers.equals(vampNumber)){
+					vNumbers.addElement(new Integer(vampireNumber));
 					count++;
 				}
 				
 				
 				
-				if(count==125){
+				if(count==125){		// 125 vampire numbers taken so no number is missed in top 100.
 					break;
 				}
 				
@@ -86,11 +88,12 @@ public class VampireNumber {
 			}
 						
 		}
-		Collections.sort(fin);
-		Iterator z = fin.iterator();
+		// sorted all 125 vampire numbers
+		Collections.sort(vNumbers);
+		Iterator<Integer> itr = vNumbers.iterator();
 		count=1;
-		while(z.hasNext()){
-			System.out.println(count + ". " + z.next());
+		while(itr.hasNext()){
+			System.out.println(count + ". " + itr.next());
 			count++;
 			if(count>100){
 				break;
