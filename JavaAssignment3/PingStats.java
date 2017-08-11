@@ -47,7 +47,13 @@ public class PingStats {
 			time[i]= match.group(2);
 			i++;
 		}
-		Arrays.sort(time);
+		try{
+			Arrays.sort(time);
+		}
+		catch(Exception e){
+			System.out.println("No response from this ip!");
+			System.exit(0);
+		}
 		
 		float medianTime;
 		if(numberOfPings%2==1){
