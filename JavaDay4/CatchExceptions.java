@@ -6,14 +6,14 @@ public class CatchExceptions {
 		// Code below gives ArrayIndexOutOfBounds Exception
 		System.out.println(arr[8]); // **** comment this line to see NullPointer Exception
 		
-		CatchExceptions ce1 = null;
+		CatchExceptions catchException = null;
 		// Comment code for ArrayIndexOutOfBounds exception to see NullPointer Exception
-		 ce1.somefun(); // **** comment this line to see Arithmetic exception
+		catchException.somefun(); // **** comment this line to see Arithmetic exception
 		
-		int a=7,b=0,z=0;
+		int number1=7,number2=0,result;
 		// #*#*#*# Comment above two exceptions to see arithmetic exception
-		z=a/b;  
-		System.out.println(z);
+		result=number1/number2;  
+		System.out.println(result);
 		
 		
 	}

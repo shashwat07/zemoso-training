@@ -40,24 +40,12 @@ public class FilePathFinder {
 		while(true){
 			System.out.println("Enter a regular expression to search files, to quit enter -1");
 			regex = scan.nextLine();
+			
 			if(regex.equals("-1")){
 				break;
 			}
 			
-			
-			for(File file : listOFiles){					
-				if(file.isDirectory()){
-					count+=getFile(file,regex);
-				}
-				else if(file.isFile()){
-					String fileName = file.getName();
-					found = Pattern.matches(regex, fileName);
-					if(found){
-						System.out.println(file.getAbsolutePath());
-						count++;
-					}
-				}
-			}
+			count+=getFile(baseFolder,regex);
 			
 			if(count==0){
 				System.out.println("File not found!");
