@@ -1,4 +1,3 @@
-import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
@@ -8,11 +7,27 @@ import java.util.Scanner;
 
 public class KYC {
 	
-	static void getDateRange(String signup, String current) throws Exception {
+	private static boolean checkValidity(String date){
+		boolean isValid=false;
+		if(date.length()==10){
+			isValid=true;
+		}
+		return isValid;
+	}
+	static int getDateRange(String signup, String current) throws Exception {
 		
 		SimpleDateFormat format = new SimpleDateFormat("dd-MM-yyyy");
-		Date signupDate = format.parse(signup);
-		Date currentDate = format.parse(current);
+		format.setLenient(false);
+		Date signupDate=null, currentDate=null;
+		try{
+			signupDate = format.parse(signup);
+			currentDate = format.parse(current);
+		}
+		catch(Exception e){
+			System.out.println("Invalid Date!");
+			return 0;	// will stop the function from performing further operation on invalid date
+		}
+		
 		
 		if(signupDate.after(currentDate)){
 			System.out.println("No range");
@@ -22,8 +37,11 @@ public class KYC {
 			Calendar calSignup = GregorianCalendar.getInstance();
 			calSignup.setTime(signupDate);
 			
+			
 			Calendar calCurrent = GregorianCalendar.getInstance();
 			calCurrent.setTime(currentDate);
+			
+			
 			
 			int years = calCurrent.get(Calendar.YEAR) - calSignup.get(Calendar.YEAR);
 			calSignup.add(GregorianCalendar.YEAR, years);
@@ -44,14 +62,17 @@ public class KYC {
 			}
 			
 		}
+		return 0;
 		
 	}
 
 	
 	public static void main(String[] args)  {
 	
+		System.out.println("Enter number of inputs : ");
 		Scanner scan = new Scanner(System.in);
 		int noOfInputs = scan.nextInt();
+		System.out.println("Enter the " + noOfInputs + " set of dates to check for :" );
 		String data[][] = new String[noOfInputs][2];
 		
 		String signupDate = null;
@@ -67,9 +88,11 @@ public class KYC {
 		
 		for(int i=0;i<noOfInputs;i++){
 			try {
-				getDateRange(data[i][0], data[i][1]);
+				if(checkValidity(data[i][0]) && checkValidity(data[i][1])){
+					getDateRange(data[i][0], data[i][1]);
+				}
 			} catch (Exception e) {
-				e.printStackTrace();
+				System.out.println("Invalid Date!");
 			}
 		}
 		
