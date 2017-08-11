@@ -19,7 +19,10 @@ public class PingStats {
 		
 		ipAddr = scan.nextLine();
 		
-		String pingCommand = "ping " + ipAddr + " -c11";
+		System.out.println("Enter the number of ping requests to send : ");
+		int numberOfPings = scan.nextInt();
+		
+		String pingCommand = "ping " + ipAddr + " -c" + numberOfPings;
 		
 		Runtime run = Runtime.getRuntime();
 		Process p = run.exec(pingCommand);
@@ -37,7 +40,7 @@ public class PingStats {
 		Pattern pattern = Pattern.compile("([t][i][m][e][=])([0-9]*[\\.]?[0-9]*)");
 		Matcher match = pattern.matcher(pingResult);
 		
-		String time[] = new String[11];
+		String time[] = new String[numberOfPings];
 		int i=0;
 		while(match.find()){
 			System.out.println("Ping time = " + match.group(2) + " ms");
@@ -45,7 +48,16 @@ public class PingStats {
 			i++;
 		}
 		Arrays.sort(time);
-		System.out.println("Median time to ping " + ipAddr + " is " + time[5] + " ms.");
+		
+		float medianTime;
+		if(numberOfPings%2==1){
+			medianTime = Float.parseFloat(time[numberOfPings/2]);
+		}
+		else{
+			medianTime = Float.parseFloat(time[numberOfPings/2]) + Float.parseFloat(time[numberOfPings/2-1]);
+			medianTime = medianTime/2;
+		}
+		System.out.println("Median time to ping " + ipAddr + " is " + medianTime + " ms.");
 	}
 
 }
