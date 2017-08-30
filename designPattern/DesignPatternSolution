@@ -1,0 +1,13 @@
+
+Design Pattern assignment answers :
+
+
+1. java.net.URLStreamHandlerFactory#createURLStreamHandler(String) :	Factory Pattern
+	-> Here, createURLStreamHandler method creates a new URLStreamHandler instance by taking in a string parameter which specifies the 		   protocol to be used. Hence for different protocols(ftp/http/nntp/etc), it creates different URLStreamHandler objects. Hence, it's 		   creational design pattern and specifically Factory Pattern.
+
+
+2. java.util.Calendar#getInstance() :	Factory Pattern
+	-> In Calendar class, getInstance method is overloaded and depending on the parameters passed to it at runtime, it dynamically creates 		   new Calendar object as per the specifications provided. Two possible parameters that can be passed is TimeZone and Locale, hence 		   four possible getInstance methods. This is also an example of Factory Pattern.
+
+3. java.rmi.* :		Proxy Pattern
+	-> RMI (Remote Method Invocation) package provides a mechanism that enables an object on one JVM to invoke methods on an object in 		   another JVM. Since this package relies wholly on creating and dealing with a proxy object, proxy class represents functionality of 		   original class. Hence, Proxy design pattern is the obvious choice here.
