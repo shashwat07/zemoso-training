@@ -1,0 +1,34 @@
+DBMS Assignment
+
+1. SELECT title AS ComedyMoviesPG13
+FROM film, film_category, category 
+WHERE film.rating='PG-13' AND film.film_id=film_category.film_id AND film_category.category_id = category.category_id AND  category.name='Comedy';
+
+
+2. SELECT f.title, count(f.film_id)
+FROM rental r
+JOIN inventory i
+ON r.inventory_id=i.inventory_id
+JOIN film f
+ON i.film_id = f.film_id
+JOIN film_category fc
+ON f.film_id = fc.film_id
+JOIN category c
+ON fc.category_id = c.category_id
+WHERE c.name = 'Horror'
+GROUP by f.title
+ORDER by count(f.film_id) desc
+LIMIT 3;
+
+3. SELECT distinct customer_list.name 
+FROM  category, film_category, customer_list, rental, inventory 
+WHERE customer_list.country='India' and customer_list.ID = rental.customer_id and rental.inventory_id = inventory.inventory_id and inventory.film_id = film_category.film_id and film_category.category_id = category.category_id and category.name = 'Sports' 
+ORDER BY customer_list.name;
+
+4. SELECT distinct name
+FROM actor, film_actor, rental, inventory, customer_list
+WHERE customer_list.ID = rental.customer_id and customer_list.country = 'Canada' and rental.inventory_id = inventory.inventory_id and inventory.film_id =film_actor.film_id and  actor.actor_id = film_actor.actor_id and first_name = 'NICK' and last_name = 'WAHLBERG';
+
+5. SELECT count(*)  as NumberOfMovies
+FROM actor, film_actor
+WHERE actor.actor_id = film_actor.actor_id and first_name = 'SEAN' and last_name = 'WILLIAMS';

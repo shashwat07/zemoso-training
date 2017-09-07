@@ -1,0 +1,35 @@
+1. SELECT count(distinct fl.title)
+FROM film f
+JOIN film_list fl
+ON f.film_id = fl.FID
+WHERE f.special_features LIKE '%Deleted Scenes%' AND fl.category='Documentary';
+
+
+2. SELECT count(distinct r.rental_id)
+FROM film_list f, staff st, store s, rental r, inventory i
+WHERE f.category = 'Sci-Fi' and f.FID = i.film_id and s.manager_staff_id = st.staff_id and r.inventory_id = i.inventory_id and i.store_id = s.store_id and st.first_name = 'Jon' and st.last_name='Stephens';
+
+
+3. SELECT total_sales 
+FROM sales_by_film_category
+WHERE category = 'Animation';
+
+
+4. SELECT film_list.category, count(film_list.category)
+FROM customer
+JOIN rental
+ON customer.customer_id = rental.customer_id
+JOIN inventory
+ON rental.inventory_id = inventory.inventory_id
+JOIN film_list
+ON inventory.film_id = film_list.FID
+WHERE customer.first_name = 'PATRICIA' AND customer.last_name = 'JOHNSON'
+GROUP BY film_list.category
+ORDER BY count(film_list.category) desc 
+LIMIT 3;
+
+
+5. SELECT  count(*)
+FROM film_list f, rental r, customer c, inventory i
+WHERE f.rating = 'R' AND c.first_name = 'SUSAN' AND c.last_name = 'WILSON' AND c.customer_id = r.customer_id AND i.inventory_id = r.inventory_id AND i.film_id = f.FID;
+
