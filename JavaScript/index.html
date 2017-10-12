@@ -14,20 +14,20 @@
 		<div id="wholeBody" class="row">
 			<div id="tables" class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
 				<div id="heading"><h2>Tables</h2></div>
-				<input id="searchMenu" type="search" placeholder="Search" class="col-sm-12">
+				<input id="searchTable" type="search" placeholder="Search" class="col-sm-12"  onkeyup="searchTable()" >	
 				<div id="tableAll">
-					<div id="table1" class="table" data-toggle="modal" data-target="#getBill" ondrop="drop(event)" ondragover="allowDrop(event)">Table 1</div>
-					<div id="table2" class="table" onclick="generateBill(id)" ondrop="drop(event)" ondragover="allowDrop(event)">Table 2</div>
-					<div id="table3" class="table" onclick="generateBill(id)" ondrop="drop(event)" ondragover="allowDrop(event)">Table 3</div>
-					<div id="table4" class="table" onclick="generateBill(id)" ondrop="drop(event)" ondragover="allowDrop(event)">Table 4</div>
-					<div id="table5" class="table" onclick="generateBill(id)" ondrop="drop(event)" ondragover="allowDrop(event)">Table 5</div>
+					<div id="table1" class="table" onclick="generateBill(id)" ondrop="drop(event)" ondragover="allowDrop(event)"><h6>Table-1</h6>Add Items here<div id="orderCount1" class="count"></div></div>
+					<div id="table2" class="table" onclick="generateBill(id)" ondrop="drop(event)" ondragover="allowDrop(event)"><h6>Table-2</h6>Add Items here<div id="orderCount2" class="count"></div></div>
+					<div id="table3" class="table" onclick="generateBill(id)" ondrop="drop(event)" ondragover="allowDrop(event)"><h6>Table-3</h6>Add Items here<div id="orderCount3" class="count"></div></div>
+					<div id="table4" class="table" onclick="generateBill(id)" ondrop="drop(event)" ondragover="allowDrop(event)"><h6>Table-4</h6>Add Items here<div id="orderCount4" class="count"></div></div>
+					<div id="table5" class="table" onclick="generateBill(id)" ondrop="drop(event)" ondragover="allowDrop(event)"><h6>Table-5</h6>Add Items here<div id="orderCount5" class="count"></div></div>
 				</div>
 
 			</div>
 
 			<div id="menu" class="col-lg-8 col-md-8 col-sm-8 col-xs-8">
 				<div id="heading"><h2>Menu</h2></div>
-				<input id="searchMenu" type="search" placeholder="Search Menu" class="col-sm-9">
+				<input id="searchMenu" type="search" placeholder="Search Menu" class="col-sm-9" onkeyup="searchMenu()" >
 				<div id="items"></div>
 			</div>
 
@@ -42,11 +42,7 @@
 				        </div>
 
 			        	<div class="modal-body">
-			        		<div id="bill" class="row">
-				          		<div id="itemName" class="col-sm-6">biryani</div>
-				          		<div id="itemQuantity" class="col-sm-3">1</div>
-				          		<div id="itemTotal" class="col-sm-3">100</div>
-				          	</div>
+			        		<div id="bill" class="row"></div>
 				          	<div id ="total" class="row">
 				          		<div class="col-sm-3">Total Bill : </div>
 				          		<div id="totalAmount" class="col-sm-9"></div>
@@ -54,7 +50,8 @@
 				        </div>
 
 				        <div class="modalFooter row text-center">
-	              			<div class="col-md-12"><button type="button" id="closeSession" class="btn btn-danger">End Session</button></div>
+				        	<div class="col-md-6"><button onclick="updateOrder()" type="button" id="updateOrder" class="btn btn-info">Update Order</button></div>
+	              			<div class="col-md-6"><button onclick="closeSession()" type="button" id="closeSession" class="btn btn-danger">End Session</button></div>
 	             		</div>
 			      	</div>
 		      	</div>
