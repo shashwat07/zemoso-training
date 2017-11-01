@@ -1,0 +1,7 @@
+val inputFile = sc.textFile("test/tweets-1.txt")
+val words = inputFile.flatMap(line => line.split(" "))
+val huhu = words.filter(line => line.startsWith("#"))
+val tagCount = huhu.map((_,1)).reduceByKey(_+_)
+val result = tagCount.map(d=>d.swap).sortByKey(false,1).map(d=>d.swap)
+val data = result.take(100)
+data.foreach(println)
