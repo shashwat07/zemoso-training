@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd">
+
+<beans>
+    <bean id="employee" class="Employee" autowire="byName">
+
+    </bean>
+
+    <bean id="shyam" class="Person">
+        <property name="name" value="Shyam" />
+        <property name="age" value="22" />
+        <property name="gender" value="Male" />
+    </bean>
+
+    <bean id="geeta" class="Person">
+        <property name="name" value="Geeta" />
+        <property name="age" value="21" />
+        <property name="gender" value="Female" />
+    </bean>
+
+
+</beans>
