@@ -6,13 +6,13 @@
 
     </bean>
 
-    <bean id="shyam" class="Person">
+    <bean id="manager" class="Person">
         <property name="name" value="Shyam" />
         <property name="age" value="22" />
         <property name="gender" value="Male" />
     </bean>
 
-    <bean id="geeta" class="Person">
+    <bean id="assistant" class="Person">
         <property name="name" value="Geeta" />
         <property name="age" value="21" />
         <property name="gender" value="Female" />

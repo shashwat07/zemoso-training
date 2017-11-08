@@ -1,25 +1,26 @@
 public class Employee{
-    private Person shyam;
-    private Person geeta;
+    private Person manager;
+    private Person assistant;
 
-    public Person getShyam() {
-        return shyam;
+    public Person getManager() {
+        return manager;
     }
 
-    public void setShyam(Person shyam) {
-        this.shyam = shyam;
+    public void setManager(Person manager) {
+        this.manager = manager;
     }
 
-    public Person getGeeta() {
-        return geeta;
+    public Person getAssistant() {
+        return assistant;
     }
 
-    public void setGeeta(Person geeta) {
-        this.geeta = geeta;
+    public void setAssistant(Person assistant) {
+        this.assistant = assistant;
     }
 
     public void details(){
-        System.out.println(getGeeta().name + " " + getGeeta().age + " " + getGeeta().gender);
-        System.out.println(getShyam().name + " " + getShyam().age + " " + getShyam().gender);
+        System.out.println("Manager : " + getManager().name + " " + getManager().age + " " + getManager().gender);
+        System.out.println("Assistant : " + getAssistant().name + " " + getAssistant().age + " " + getAssistant().gender);
+
     }
 }
